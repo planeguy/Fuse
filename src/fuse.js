@@ -272,7 +272,7 @@
       if (options.verbose) log('Score average:', finalScore)
 
       // If a match is found, add the item to <rawResults>, including its score
-      if (exists || mainSearchResult.isMatch) {
+      //if (exists || mainSearchResult.isMatch) {
         // Check if the item already exists in our results
         existingResult = this.resultMap[index]
 
@@ -286,6 +286,7 @@
           })
         } else {
           // Add it to the raw result list
+          if (exists || mainSearchResult.isMatch) {
           this.resultMap[index] = {
             item: entity,
             output: [{
@@ -296,8 +297,9 @@
           }
 
           this.results.push(this.resultMap[index])
+          }
         }
-      }
+      //}
     } else if (isArray(text)) {
       for (i = 0; i < text.length; i++) {
         this._analyze(key, text[i], entity, index)
